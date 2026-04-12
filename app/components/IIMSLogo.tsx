@@ -1,5 +1,5 @@
 export default function IIMSLogo({
-  className = "h-[72px] w-auto",
+  className = "h-18 w-auto",
 }: {
   className?: string;
 }) {
@@ -11,10 +11,10 @@ export default function IIMSLogo({
       className={className}
     >
       {/* Background Circle */}
-      <circle cx="80" cy="80" r="80" fill="#f3f0e8" />
+      <circle cx="80" cy="80" r="80" fill="#ffffff" />
 
-      {/* Book Icon (Golden Yellow) */}
-      <g stroke="#eebf3b" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" fill="none">
+      {/* Book Icon (Green) */}
+      <g stroke="#22c55e" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" fill="none">
         {/* Outer Cover Wraparound */}
         <path d="M 40 50 L 40 68 L 80 86 L 120 68 L 120 50" />
         
@@ -23,7 +23,7 @@ export default function IIMSLogo({
       </g>
       
       {/* Accent Dot on top right */}
-      <circle cx="122" cy="40" r="2.5" fill="#eebf3b" />
+      <circle cx="122" cy="40" r="2.5" fill="#22c55e" />
 
       {/* IIMS Title */}
       <text
@@ -33,7 +33,7 @@ export default function IIMSLogo({
         fontFamily="Georgia, 'Times New Roman', serif"
         fontWeight="bold"
         fontSize="46"
-        fill="#2a3c4d"
+        fill="#14532d"
         letterSpacing="1"
       >
         IIMS
@@ -46,7 +46,7 @@ export default function IIMSLogo({
         textAnchor="middle"
         fontFamily="Georgia, 'Times New Roman', serif"
         fontSize="11.5"
-        fill="#2a3c4d"
+        fill="#14532d"
         letterSpacing="0.5"
       >
         Creating Innovations

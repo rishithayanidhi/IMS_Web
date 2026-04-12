@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 function useScrollReveal() {
@@ -30,12 +31,17 @@ export default function AboutPage() {
   const scrollRef = useScrollReveal();
 
   return (
-    <main ref={scrollRef} className="min-h-screen bg-transparent pt-32 pb-24 text-slate-800">
-      <div className="mx-auto max-w-6xl px-6">
+    <main ref={scrollRef} className="relative min-h-screen overflow-hidden bg-transparent pt-32 pb-24 text-slate-800">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="blob-complex absolute -top-32 -left-32 h-125 w-125 rounded-full bg-emerald-300/25 blur-[100px]" />
+        <div className="blob-complex blob-d2 absolute top-1/4 right-0 h-96 w-96 rounded-full bg-emerald-200/25 blur-[80px]" />
+        <div className="blob-complex blob-d3 absolute bottom-0 left-1/4 h-100 w-100 rounded-full bg-emerald-100/25 blur-[90px]" />
+      </div>
+      <div className="relative mx-auto max-w-6xl px-6">
         
         {/* Page Header */}
         <div className="reveal-up mb-16 text-center">
-          <h1 className="mt-6 text-4xl font-black text-slate-900 sm:text-5xl">Our Story &amp; Vision</h1>
+          <h1 className="mt-6 text-4xl font-black text-emerald-950 sm:text-5xl">Our Story &amp; Vision</h1>
           <p className="mx-auto mt-4 max-w-xl text-lg text-slate-600">
             Discover the origins, the passion, and the core values that drive Invent Institute of Mathematics &amp; Science.
           </p>
@@ -46,17 +52,18 @@ export default function AboutPage() {
           {/* Section 1: Origin */}
           <section className="flex flex-col items-center gap-12 lg:flex-row">
             <div className="reveal-right relative w-full lg:w-1/2">
-              <div className="absolute -inset-4 rounded-3xl bg-indigo-200/50 blur-xl"></div>
+              <div className="absolute -inset-4 rounded-3xl bg-emerald-100/35 blur-xl"></div>
               {/* Using local institute image if available, else fallback to a nice building */}
-              <img 
-                src="/institute.jpg" 
-                alt="IIMS Institute Building" 
-                className="relative z-10 w-full rounded-2xl object-cover shadow-2xl h-[400px]"
-                onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" }}
+              <Image
+                src="/institute.jpg"
+                alt="IIMS Institute Building"
+                width={1200}
+                height={400}
+                className="relative z-10 h-100 w-full rounded-2xl object-cover shadow-2xl"
               />
             </div>
             <div className="reveal-left w-full lg:w-1/2 text-center lg:text-right">
-              <h2 className="mb-6 text-2xl font-black uppercase tracking-widest text-indigo-900">Origin of IIMS</h2>
+              <h2 className="mb-6 text-2xl font-black uppercase tracking-widest text-emerald-800">Origin of IIMS</h2>
               <div className="flex flex-col gap-4 text-justify text-sm leading-relaxed text-slate-600 sm:text-base">
                 <p>
                   Invent Institute of Mathematics &amp; Science was founded with one purpose: to build a space for all students to grow, learn and create with each passing day. Through a unique teaching approach and a truly passionate staff, we help students develop academically and personally to the highest level.
@@ -71,20 +78,50 @@ export default function AboutPage() {
             </div>
           </section>
 
+          {/* Section 2: Founder & CEO */}
+          <section className="flex flex-col items-center gap-12 lg:flex-row">
+            <div className="reveal-right relative w-full lg:w-1/2">
+              <div className="absolute -inset-4 rounded-3xl bg-emerald-100/35 blur-xl"></div>
+              <Image
+                src="/founder.jpg"
+                alt="Founder and Head Professor of IIMS"
+                width={1200}
+                height={350}
+                className="relative z-10 h-87.5 w-full rounded-2xl object-cover shadow-2xl"
+              />
+            </div>
+            <div className="reveal-left w-full lg:w-1/2 text-center lg:text-left">
+              <h2 className="mb-6 text-2xl font-black uppercase tracking-widest text-emerald-800">About Our Founder &amp; Head Professor</h2>
+              <div className="flex flex-col gap-4 text-justify text-sm leading-relaxed text-slate-600 sm:text-base">
+                <p>
+                  Our Founder &amp; Head Professor, Mr. K Gowrishankar, envisioned Invent Institute of Mathematics &amp; Science as a place where every learner receives personal guidance, strong fundamentals, and confidence to achieve excellence.
+                </p>
+                <p>
+                  With a student-first philosophy and years of academic mentoring experience, the leadership continues to shape our programs with discipline, care, and innovation.
+                </p>
+                <p>
+                  Under this vision, IIMS has grown into a trusted learning community that supports students in board exams, competitive preparation, and long-term career success.
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* Section 2: What We Offer */}
           <section className="flex flex-col-reverse items-center gap-12 lg:flex-row">
             <div className="reveal-right w-full lg:w-1/2 text-center lg:text-left">
-              <h2 className="mb-6 text-2xl font-black uppercase tracking-widest text-indigo-900">What We Offer Our Students?</h2>
+              <h2 className="mb-6 text-2xl font-black uppercase tracking-widest text-emerald-800">What We Offer Our Students?</h2>
               <p className="text-justify text-base leading-relaxed text-slate-600">
                 Students are our children, our kids. We invent faculties who even care about their psychological or mental health. We often make our students feel stress-free by conducting small, meaningful programs within the institution.
               </p>
             </div>
             <div className="reveal-left relative w-full lg:w-1/2">
-              <div className="absolute -inset-4 rounded-3xl bg-cyan-200/50 blur-xl"></div>
-              <img 
-                src="/classroom.png" 
-                alt="Students in a classroom" 
-                className="relative z-10 w-full rounded-2xl object-cover shadow-2xl h-[350px]"
+              <div className="absolute -inset-4 rounded-3xl bg-emerald-100/35 blur-xl"></div>
+              <Image
+                src="/classroom.png"
+                alt="Students in a classroom"
+                width={1200}
+                height={350}
+                className="relative z-10 h-87.5 w-full rounded-2xl object-cover shadow-2xl"
               />
             </div>
           </section>
@@ -92,15 +129,17 @@ export default function AboutPage() {
           {/* Section 3: Friendly Conversations */}
           <section className="flex flex-col items-center gap-12 lg:flex-row">
             <div className="reveal-right relative w-full lg:w-1/2">
-              <div className="absolute -inset-4 rounded-3xl bg-violet-200/50 blur-xl"></div>
-              <img 
-                src="/graduation.png" 
-                alt="Students throwing graduation caps" 
-                className="relative z-10 w-full rounded-2xl object-cover shadow-2xl h-[350px]"
+              <div className="absolute -inset-4 rounded-3xl bg-emerald-100/35 blur-xl"></div>
+              <Image
+                src="/graduation.png"
+                alt="Students throwing graduation caps"
+                width={1200}
+                height={350}
+                className="relative z-10 h-87.5 w-full rounded-2xl object-cover shadow-2xl"
               />
             </div>
             <div className="reveal-left w-full lg:w-1/2 text-center lg:text-right">
-              <h2 className="mb-6 text-2xl font-black uppercase tracking-widest text-indigo-900">Friendly Conversations</h2>
+              <h2 className="mb-6 text-2xl font-black uppercase tracking-widest text-emerald-800">Friendly Conversations</h2>
               <p className="text-justify text-base leading-relaxed text-slate-600">
                 We make students have healthy conversations among themselves about their subjects, creating a way to keep themselves updated. And sometimes, quizzes and hackathons will be conducted to test their critical thinking skills. This makes students overcome their inferiority and gives them more confidence in interactions with others.
               </p>

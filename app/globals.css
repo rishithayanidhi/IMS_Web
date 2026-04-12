@@ -1,14 +1,20 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #f8fafc;
-  --color-foreground: #0f172a;
+  --color-background: #fbfdfb;
+  --color-foreground: #12311f;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--color-background);
+  background:
+    radial-gradient(circle at top left, rgba(34, 197, 94, 0.14), transparent 32%),
+    radial-gradient(circle at top right, rgba(16, 185, 129, 0.1), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(134, 239, 172, 0.08), transparent 26%),
+    var(--color-background);
+  background-size: auto, auto, auto, auto;
+  background-position: top left, top right, bottom left, 0 0;
   color: var(--color-foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
@@ -159,17 +165,17 @@ html {
 
 /* Custom shadow utilities for premium feel */
 .shadow-premium {
-  box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.15), 0 10px 20px -10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 40px -15px rgba(34, 197, 94, 0.14), 0 10px 20px -10px rgba(0, 0, 0, 0.05);
 }
 .shadow-premium-hover {
-  box-shadow: 0 30px 60px -15px rgba(79, 70, 229, 0.3), 0 15px 25px -10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 30px 60px -15px rgba(16, 185, 129, 0.22), 0 15px 25px -10px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Node Graph Styles ── */
 
 /* Dashed lines between nodes */
 .node-line {
-  stroke: rgba(99, 102, 241, 0.25);
+  stroke: rgba(34, 197, 94, 0.22);
   stroke-width: 1.5;
   stroke-dasharray: 6 5;
   fill: none;
@@ -187,13 +193,13 @@ html {
   50% { opacity: 1; r: 6px; }
 }
 .relay-dot {
-  fill: rgba(99, 102, 241, 0.5);
+  fill: rgba(16, 185, 129, 0.55);
   animation: relay-pulse 2s ease-in-out infinite;
 }
 
 /* Card connector endpoint dots */
 .connector-dot {
-  fill: rgba(99, 102, 241, 0.7);
+  fill: rgba(34, 197, 94, 0.72);
   animation: relay-pulse 2s ease-in-out infinite;
   animation-delay: 1s;
 }
