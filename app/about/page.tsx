@@ -78,7 +78,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Section 2: Founder & CEO */}
+          {/* Section 2: Founder & CEO
           <section className="flex flex-col items-center gap-12 lg:flex-row">
             <div className="reveal-right relative w-full lg:w-1/2">
               <div className="absolute -inset-4 rounded-3xl bg-emerald-100/35 blur-xl"></div>
@@ -104,7 +104,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* Section 2: What We Offer */}
           <section className="flex flex-col-reverse items-center gap-12 lg:flex-row">
