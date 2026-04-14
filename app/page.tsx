@@ -142,7 +142,7 @@ export default function Home() {
           <div className="blob-complex blob-d2 absolute top-1/4 right-0 h-96 w-96 rounded-full bg-emerald-200/35 blur-[80px]" />
           <div className="blob-complex blob-d3 absolute bottom-0 left-1/4 h-100 w-100 rounded-full bg-emerald-100/35 blur-[90px]" />
         </div>
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-12 px-6 pt-32 pb-20 lg:flex-row lg:items-center lg:justify-between">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-8 px-4 pt-24 pb-16 sm:gap-12 sm:px-6 sm:pt-32 sm:pb-20 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl text-center lg:text-left">
             <div className="anim-right inline-block">
               <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white/85 px-5 py-2 text-xs font-bold uppercase tracking-widest text-emerald-700 shadow-sm backdrop-blur-md">
@@ -154,7 +154,7 @@ export default function Home() {
               </span>
             </div>
             <h1
-              className="anim-up text-5xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl"
+              className="anim-up text-3xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl"
               style={{ animationDelay: "0.2s" }}
             >
               Invent Institute of <br className="hidden lg:block" />
@@ -163,7 +163,7 @@ export default function Home() {
               </span>
             </h1>
             <p
-              className="anim-up mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-600 lg:mx-0"
+              className="anim-up mx-auto mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg lg:mx-0"
               style={{ animationDelay: "0.4s" }}
             >
               Creating Innovations — Empowering students with academic
@@ -176,7 +176,7 @@ export default function Home() {
             >
               <a
                 href="/academics"
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-2xl bg-emerald-600 px-8 py-4 text-sm font-bold text-white shadow-premium transition-all hover:scale-105 hover:bg-emerald-500 hover:shadow-premium-hover active:scale-95"
+                className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-2xl bg-emerald-600 px-8 py-4 text-sm font-bold text-white shadow-premium transition-all hover:scale-105 hover:bg-emerald-500 hover:shadow-premium-hover active:scale-95 sm:w-auto"
               >
                 <div className="absolute inset-0 flex h-full w-full justify-center transform-[skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:transform-[skew(-12deg)_translateX(100%)]">
                   <div className="relative h-full w-8 bg-white/20" />
@@ -185,7 +185,7 @@ export default function Home() {
               </a>
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-2xl border-2 border-emerald-200 bg-white/70 px-8 py-4 text-sm font-bold text-slate-700 backdrop-blur-md transition-all hover:-translate-y-1 hover:border-emerald-500 hover:bg-white hover:text-emerald-700 hover:shadow-premium"
+                className="inline-flex w-full items-center justify-center rounded-2xl border-2 border-emerald-200 bg-white/70 px-8 py-4 text-sm font-bold text-slate-700 backdrop-blur-md transition-all hover:-translate-y-1 hover:border-emerald-500 hover:bg-white hover:text-emerald-700 hover:shadow-premium sm:w-auto"
               >
                 Contact Us
               </a>
@@ -222,7 +222,7 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <div className="grid grid-cols-4 divide-x divide-slate-200/50 bg-white/70 backdrop-blur-md">
+              <div className="grid grid-cols-2 divide-x divide-slate-200/50 bg-white/70 backdrop-blur-md sm:grid-cols-4">
                 {stats.map((s) => (
                   <div
                     key={s.label}
@@ -245,7 +245,7 @@ export default function Home() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 animate-bounce flex-col items-center gap-2">
+        <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-bounce flex-col items-center gap-2 sm:flex">
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
             Scroll Down
           </span>
@@ -256,7 +256,7 @@ export default function Home() {
       </section>
 
       {/* Marquee */}
-      <section className="relative overflow-hidden bg-white py-10 shadow-inner border-y border-emerald-100">
+      <section className="relative overflow-hidden bg-white py-6 shadow-inner border-y border-emerald-100 sm:py-10">
         <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-r from-white via-transparent to-white" />
         <div className="marquee flex whitespace-nowrap">
           {[...Array(2)].map((_, i) => (
@@ -286,7 +286,7 @@ export default function Home() {
       {/* ── Academics / Features — 2×2 Editorial Grid ── */}
       <section
         id="academics"
-        className="relative bg-transparent py-28 overflow-hidden"
+        className="relative bg-transparent py-14 overflow-hidden sm:py-28"
       >
         <div
           className="pointer-events-none absolute inset-0"
@@ -296,13 +296,13 @@ export default function Home() {
           }}
         />
 
-        <div className="relative mx-auto max-w-6xl px-6">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           {/* Section header */}
-          <div className="reveal-up mb-16 text-center">
+          <div className="reveal-up mb-8 text-center sm:mb-16">
             <span className="inline-block rounded-full border border-emerald-200 bg-white px-5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.25em] text-emerald-700 shadow-sm">
               Academic Span
             </span>
-            <h2 className="mt-5 text-4xl font-black text-slate-900 sm:text-5xl">
+            <h2 className="mt-5 text-3xl font-black text-slate-900 sm:text-4xl md:text-5xl">
               What Sets Us <span className="text-emerald-700">Apart</span>
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-base text-slate-500">
@@ -320,7 +320,7 @@ export default function Home() {
             }}
           >
             {/* Card 1 — Test for Excellence */}
-            <div className="reveal-left group relative overflow-hidden border-b border-r border-emerald-100 bg-white p-10 transition-all duration-500 hover:bg-emerald-50/30">
+            <div className="reveal-left group relative overflow-hidden border-b border-r border-emerald-100 bg-white p-5 transition-all duration-500 hover:bg-emerald-50/30 sm:p-10">
               {/* animated left-border accent */}
               <span className="absolute left-0 top-0 h-full w-1 origin-top scale-y-0 rounded-r bg-linear-to-b from-emerald-500 to-emerald-300 transition-transform duration-500 group-hover:scale-y-100" />
               {/* subtle glow */}
@@ -347,7 +347,7 @@ export default function Home() {
 
             {/* Card 2 — Commitment to Excellence */}
             <div
-              className="reveal-right group relative overflow-hidden border-b border-emerald-100 bg-white p-10 transition-all duration-500 hover:bg-emerald-50/30"
+              className="reveal-right group relative overflow-hidden border-b border-emerald-100 bg-white p-5 transition-all duration-500 hover:bg-emerald-50/30 sm:p-10"
               style={{ transitionDelay: "80ms" }}
             >
               <span className="absolute left-0 top-0 h-full w-1 origin-top scale-y-0 rounded-r bg-linear-to-b from-emerald-500 to-emerald-300 transition-transform duration-500 group-hover:scale-y-100" />
@@ -374,7 +374,7 @@ export default function Home() {
 
             {/* Card 3 — Students Life */}
             <div
-              className="reveal-left group relative overflow-hidden border-r border-emerald-100 bg-white p-10 transition-all duration-500 hover:bg-emerald-50/30"
+              className="reveal-left group relative overflow-hidden border-r border-emerald-100 bg-white p-5 transition-all duration-500 hover:bg-emerald-50/30 sm:p-10"
               style={{ transitionDelay: "160ms" }}
             >
               <span className="absolute left-0 top-0 h-full w-1 origin-top scale-y-0 rounded-r bg-linear-to-b from-emerald-500 to-emerald-300 transition-transform duration-500 group-hover:scale-y-100" />
@@ -401,7 +401,7 @@ export default function Home() {
 
             {/* Card 4 — Courses Offered (dark accent) */}
             <div
-              className="reveal-right group relative overflow-hidden bg-linear-to-br from-emerald-700 via-emerald-800 to-emerald-950 p-10"
+              className="reveal-right group relative overflow-hidden bg-linear-to-br from-emerald-700 via-emerald-800 to-emerald-950 p-5 sm:p-10"
               style={{ transitionDelay: "240ms" }}
             >
               {/* Decorative rings */}
@@ -468,12 +468,12 @@ export default function Home() {
             style={{ animationDirection: "reverse", animationDuration: "20s" }}
           />
         </div>
-        <div className="reveal-up relative z-10 mx-auto max-w-3xl px-6 text-center">
-          <div className="glass-panel mx-auto max-w-2xl rounded-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(34,197,94,0.12)]">
+        <div className="reveal-up relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6">
+          <div className="glass-panel mx-auto max-w-2xl rounded-2xl p-5 shadow-[0_0_50px_rgba(34,197,94,0.12)] sm:rounded-3xl sm:p-8 md:p-12">
             <span className="inline-block rounded-full border border-emerald-200 bg-white px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-emerald-700 backdrop-blur-md">
               Admissions Open {new Date().getFullYear()}
             </span>
-            <h2 className="mt-5 text-3xl font-black text-emerald-950 sm:text-4xl lg:text-5xl drop-shadow-md">
+            <h2 className="mt-5 text-2xl font-black text-emerald-950 sm:text-3xl md:text-4xl lg:text-5xl drop-shadow-md">
               Begin Your Journey
               <br />
               <span className="bg-linear-to-r from-emerald-700 to-emerald-500 bg-clip-text text-transparent">

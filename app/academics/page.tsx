@@ -9,7 +9,12 @@ function useScrollReveal() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const selectors = [".reveal-up", ".reveal-down", ".reveal-left", ".reveal-right"];
+    const selectors = [
+      ".reveal-up",
+      ".reveal-down",
+      ".reveal-left",
+      ".reveal-right",
+    ];
     const targets = el.querySelectorAll(selectors.join(", "));
     const observer = new IntersectionObserver(
       (entries) => {
@@ -20,7 +25,7 @@ function useScrollReveal() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     targets.forEach((t) => observer.observe(t));
     return () => observer.disconnect();
@@ -46,7 +51,7 @@ export default function AcademicsPage() {
       level: "Secondary Focus",
       board: "SCERT, NCERT, IGCSE",
       accent: "bg-lime-500",
-      courses: ["Mathematics", "Science","Computer Science","Social Studies"],
+      courses: ["Mathematics", "Science", "Computer Science", "Social Studies"],
     },
     {
       id: "higher",
@@ -54,7 +59,14 @@ export default function AcademicsPage() {
       level: "Higher Secondary Focus",
       board: "SCERT, NCERT, IGCSE",
       accent: "bg-amber-500",
-      courses: ["General Mathematics", "Physics", "Chemistry", "Biology", "Business Mathematics", "Accountancy"],
+      courses: [
+        "General Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Business Mathematics",
+        "Accountancy",
+      ],
     },
     {
       id: "ug",
@@ -62,7 +74,13 @@ export default function AcademicsPage() {
       level: "College Support",
       board: "Engineering and allied streams",
       accent: "bg-teal-500",
-      courses: ["Engineering Mathematics - M1", "Engineering Mathematics - M2", "Engineering Mathematics - M3", "Probability and Statistics", "Other allied UG papers"],
+      courses: [
+        "Engineering Mathematics - M1",
+        "Engineering Mathematics - M2",
+        "Engineering Mathematics - M3",
+        "Probability and Statistics",
+        "Other allied UG papers",
+      ],
     },
     {
       id: "computer",
@@ -70,7 +88,16 @@ export default function AcademicsPage() {
       level: "Career Skills",
       board: "Programming and web stack",
       accent: "bg-yellow-500",
-      courses: ["Python", "Web Development", "MERN", "Java", "JavaScript", "C++", "C", "PHP"],
+      courses: [
+        "Python",
+        "Web Development",
+        "MERN",
+        "Java",
+        "JavaScript",
+        "C++",
+        "C",
+        "PHP",
+      ],
     },
   ];
 
@@ -98,11 +125,13 @@ export default function AcademicsPage() {
   ];
 
   return (
-    <main ref={scrollRef} className="min-h-screen bg-transparent pt-24 pb-20">
-      
+    <main
+      ref={scrollRef}
+      className="min-h-screen bg-transparent pt-20 pb-14 sm:pt-24 sm:pb-20"
+    >
       {/* ── Hero Section ── */}
       <section className="relative mx-auto mt-4 max-w-7xl px-4 sm:px-6">
-        <div className="relative flex h-62.5 w-full items-center justify-center overflow-hidden rounded-3xl border border-emerald-100 bg-white shadow-premium sm:h-87.5">
+        <div className="relative flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl border border-emerald-100 bg-white shadow-premium sm:h-62.5 sm:rounded-3xl md:h-87.5">
           {/* Abstract blobs matching theme */}
           <div className="absolute inset-0 opacity-40">
             <div className="absolute -top-32 -left-32 h-100 w-100 rounded-full bg-emerald-300 blur-[80px]" />
@@ -112,7 +141,7 @@ export default function AcademicsPage() {
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
           {/* Title */}
           <div className="relative z-10 text-center anim-up">
-            <h1 className="text-4xl font-extrabold uppercase tracking-[0.2em] text-emerald-950 sm:text-5xl lg:text-6xl drop-shadow-lg">
+            <h1 className="text-2xl font-extrabold uppercase tracking-[0.15em] text-emerald-950 sm:text-4xl sm:tracking-[0.2em] lg:text-5xl xl:text-6xl drop-shadow-lg">
               Our Academics
             </h1>
             <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-emerald-500 opacity-80" />
@@ -121,31 +150,44 @@ export default function AcademicsPage() {
       </section>
 
       {/* ── Offered Courses Section ── */}
-      <section className="relative mx-auto mt-24 max-w-7xl px-6">
+      <section className="relative mx-auto mt-14 max-w-7xl px-4 sm:mt-24 sm:px-6">
         <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:gap-16">
           <div className="lg:w-1/3 reveal-up">
             <h2 className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-emerald-700">
               Curriculum Map
             </h2>
-            <h3 className="mt-3 text-3xl font-black text-slate-900 uppercase">
+            <h3 className="mt-3 text-2xl font-black text-slate-900 uppercase sm:text-3xl">
               Course Categories
             </h3>
             <p className="mt-4 text-justify text-sm leading-relaxed text-slate-500">
-              We organize our courses by learning stage so students and parents can quickly find the right track. Each category below highlights its focus area and covered subjects.
+              We organize our courses by learning stage so students and parents
+              can quickly find the right track. Each category below highlights
+              its focus area and covered subjects.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div className="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-4 text-center">
-                <p className="text-2xl font-black text-emerald-700">{courseCategories.length}</p>
-                <p className="text-xs font-semibold uppercase tracking-wide text-emerald-900">Main Categories</p>
+                <p className="text-2xl font-black text-emerald-700">
+                  {courseCategories.length}
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-emerald-900">
+                  Main Categories
+                </p>
               </div>
               <div className="rounded-2xl border border-yellow-200 bg-yellow-50/80 p-4 text-center">
-                <p className="text-2xl font-black text-amber-700">{courseCategories.reduce((total, category) => total + category.courses.length, 0)}</p>
-                <p className="text-xs font-semibold uppercase tracking-wide text-amber-900">Course Modules</p>
+                <p className="text-2xl font-black text-amber-700">
+                  {courseCategories.reduce(
+                    (total, category) => total + category.courses.length,
+                    0,
+                  )}
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-amber-900">
+                  Course Modules
+                </p>
               </div>
             </div>
             <Link
               href="/admissions"
-              className="mt-6 inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-emerald-500"
+              className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-emerald-500 sm:w-auto"
             >
               Apply for Admission
             </Link>
@@ -153,24 +195,39 @@ export default function AcademicsPage() {
           <div className="lg:w-2/3">
             <div className="grid gap-6 md:grid-cols-2">
               {courseCategories.map((category, idx) => (
-                <div key={category.id} className="reveal-left rounded-3xl border border-emerald-100 bg-white p-6 shadow-premium transition-transform duration-300 hover:-translate-y-1" style={{ transitionDelay: `${idx * 80}ms` }}>
-                  <div className="flex flex-wrap items-start justify-between gap-4">
+                <div
+                  key={category.id}
+                  className="reveal-left rounded-3xl border border-emerald-100 bg-white p-6 shadow-premium transition-transform duration-300 hover:-translate-y-1"
+                  style={{ transitionDelay: `${idx * 80}ms` }}
+                >
+                  <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
-                      <div className="flex items-center gap-3">
-                        <span className={`h-3 w-3 rounded-full ${category.accent}`} />
-                        <h4 className="text-xl font-black uppercase tracking-wide text-slate-900">{category.label}</h4>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`h-3 w-3 shrink-0 rounded-full ${category.accent}`}
+                        />
+                        <h4 className="text-lg font-black uppercase tracking-wide text-slate-900 sm:text-xl">
+                          {category.label}
+                        </h4>
                       </div>
-                      <p className="mt-2 text-xs font-bold uppercase tracking-wide text-emerald-700">{category.level}</p>
+                      <p className="mt-2 text-xs font-bold uppercase tracking-wide text-emerald-700">
+                        {category.level}
+                      </p>
                     </div>
-                    <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
+                    <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600">
                       {category.board}
                     </span>
                   </div>
 
-                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  <div className="mt-4 grid gap-2 sm:mt-5 sm:gap-3 sm:grid-cols-2">
                     {category.courses.map((courseName) => (
-                      <div key={courseName} className="rounded-xl border border-emerald-100 bg-emerald-50/50 px-4 py-3">
-                        <p className="text-sm font-semibold text-slate-700">{courseName}</p>
+                      <div
+                        key={courseName}
+                        className="rounded-xl border border-emerald-100 bg-emerald-50/50 px-3 py-2.5 sm:px-4 sm:py-3"
+                      >
+                        <p className="text-xs font-semibold text-slate-700 sm:text-sm">
+                          {courseName}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -184,7 +241,7 @@ export default function AcademicsPage() {
       <div className="mx-auto my-20 h-px max-w-5xl bg-linear-to-r from-transparent via-slate-200 to-transparent" />
 
       {/* ── Features Section ── */}
-      <section className="relative mx-auto max-w-7xl px-6 pb-20">
+      <section className="relative mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-20">
         <div className="reveal-up mb-12 text-center lg:text-left">
           <h2 className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-emerald-700">
             Why Choose Us
@@ -196,23 +253,24 @@ export default function AcademicsPage() {
 
         <div className="grid gap-10 md:grid-cols-2">
           {features.map((feature, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="reveal-up group flex flex-col overflow-hidden rounded-3xl bg-white border-2 border-emerald-100 hover:border-emerald-400 transition-all duration-500 hover:-translate-y-2"
-              style={{ 
-                boxShadow: "0 8px 30px -4px rgba(34,197,94,0.16), 0 4px 12px -2px rgba(0,0,0,0.08)",
-                transitionDelay: `${idx * 150}ms`
+              style={{
+                boxShadow:
+                  "0 8px 30px -4px rgba(34,197,94,0.16), 0 4px 12px -2px rgba(0,0,0,0.08)",
+                transitionDelay: `${idx * 150}ms`,
               }}
             >
               {/* Header Title */}
               <div className="bg-emerald-50 border-b border-emerald-100 flex items-center justify-center py-5 px-6">
-                 <h4 className="text-center text-lg font-bold text-slate-800 transition-colors group-hover:text-emerald-700">
-                   {feature.title}
-                 </h4>
+                <h4 className="text-center text-lg font-bold text-slate-800 transition-colors group-hover:text-emerald-700">
+                  {feature.title}
+                </h4>
               </div>
-              
+
               {/* Image */}
-              <div className="relative h-64 w-full overflow-hidden">
+              <div className="relative h-48 w-full overflow-hidden sm:h-64">
                 <Image
                   src={feature.image}
                   alt={feature.title}
@@ -224,7 +282,7 @@ export default function AcademicsPage() {
               </div>
 
               {/* Description Body */}
-              <div className="flex grow flex-col bg-white px-8 py-6 items-center justify-center border-t border-emerald-50">
+              <div className="flex grow flex-col bg-white px-5 py-4 items-center justify-center border-t border-emerald-50 sm:px-8 sm:py-6">
                 <p className="text-justify text-sm leading-relaxed text-slate-600">
                   {feature.desc}
                 </p>
@@ -233,7 +291,7 @@ export default function AcademicsPage() {
           ))}
         </div>
       </section>
-      
+
       {/* Footer is rendered globally via layout.tsx */}
     </main>
   );

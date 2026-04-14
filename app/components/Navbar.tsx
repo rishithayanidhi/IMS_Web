@@ -42,7 +42,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("mousemove", handleMouseMove);
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
@@ -52,22 +52,23 @@ export default function Navbar() {
   return (
     <header
       className={`fixed left-1/2 z-50 w-[95%] -translate-x-1/2 transition-all duration-500 lg:w-auto ${
-        scrolled ? "top-4" : "top-6"
+        scrolled ? "top-3 sm:top-4" : "top-4 sm:top-6"
       } ${visible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0 pointer-events-none"}`}
     >
-      <nav 
+      <nav
         onMouseEnter={() => setVisible(true)}
-        className="relative flex min-h-1 items-center justify-between rounded-full border border-emerald-200/70 bg-white/92 py-2 pr-4 pl-22 shadow-[0_8px_30px_rgba(34,197,94,0.08)] backdrop-blur-xl lg:gap-14 lg:pr-8"
+        className="relative flex min-h-1 items-center justify-between rounded-full border border-emerald-200/70 bg-white/92 py-2 pr-3 pl-14 shadow-[0_8px_30px_rgba(34,197,94,0.08)] backdrop-blur-xl sm:pr-4 sm:pl-18 lg:gap-14 lg:pr-8 lg:pl-22"
         style={{
-          boxShadow: "0 0 0 1px rgba(255,255,255,0.55) inset, 0 8px 30px rgba(34,197,94,0.08), 0 4px 10px rgba(34,197,94,0.05)",
+          boxShadow:
+            "0 0 0 1px rgba(255,255,255,0.55) inset, 0 8px 30px rgba(34,197,94,0.08), 0 4px 10px rgba(34,197,94,0.05)",
         }}
       >
         {/* Logo (Left overlapping circle) */}
-        <Link 
-          href="/" 
-          className="absolute -left-2 top-1/2 flex -translate-y-1/2 items-center justify-center rounded-full bg-white p-1 shadow-[0_4px_20px_rgba(34,197,94,0.14)] transition-transform duration-500 hover:scale-105"
+        <Link
+          href="/"
+          className="absolute -left-1 top-1/2 flex -translate-y-1/2 items-center justify-center rounded-full bg-white p-0.5 shadow-[0_4px_20px_rgba(34,197,94,0.14)] transition-transform duration-500 hover:scale-105 sm:-left-2 sm:p-1"
         >
-          <IIMSLogo className="h-19 w-19" />
+          <IIMSLogo className="h-13 w-13 sm:h-16 sm:w-16 lg:h-19 lg:w-19" />
         </Link>
 
         {/* Desktop links (Right) */}
@@ -89,7 +90,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="relative z-10 mr-2 flex h-10 w-10 flex-col items-center justify-center gap-1.25 rounded-full bg-emerald-50 transition-colors hover:bg-emerald-100 lg:hidden"
+          className="relative z-10 ml-auto mr-2 flex h-10 w-10 flex-col items-center justify-center gap-1.25 rounded-full bg-emerald-50 transition-colors hover:bg-emerald-100 lg:hidden"
           aria-label="Toggle menu"
         >
           <span
