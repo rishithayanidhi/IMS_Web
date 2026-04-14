@@ -9,29 +9,26 @@ class Particle {
   vy: number;
   radius: number;
 
-  constructor(canvas: HTMLCanvasElement) {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.vx = (Math.random() - 0.5) * 1.0;
-    this.vy = (Math.random() - 0.5) * 1.0;
-    this.radius = Math.random() * 2 + 1.5;
+  constructor(w: number, h: number) {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.vx = (Math.random() - 0.5) * 0.6;
+    this.vy = (Math.random() - 0.5) * 0.6;
+    this.radius = Math.random() * 1.5 + 1;
   }
 
-  update(canvas: HTMLCanvasElement) {
+  update(w: number, h: number) {
     this.x += this.vx;
     this.y += this.vy;
-
-    if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-    if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+    if (this.x < 0 || this.x > w) this.vx = -this.vx;
+    if (this.y < 0 || this.y > h) this.vy = -this.vy;
   }
 
   draw(ctx: CanvasRenderingContext2D) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(34, 197, 94, 0.45)";
+    ctx.fillStyle = "rgba(34, 197, 94, 0.5)";
     ctx.fill();
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = "rgba(34, 197, 94, 0.35)";
   }
 }
 
@@ -44,57 +41,81 @@ export default function ParticleBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Skip on mobile to save CPU/GPU — the CSS gradients are enough
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
+    // Reduce particle count on tablet vs desktop
+    const isTablet = window.innerWidth < 1024;
+    const particleCount = isTablet ? 18 : 30;
+    const connectionDistance = 130;
+
     let particles: Particle[] = [];
-    const particleCount = 40; // Number of glowing dots
     let animationFrameId: number;
+    let offscreen: HTMLCanvasElement | null = null;
+
+    // Pre-render the static dot grid once to an offscreen canvas
+    const buildDotGrid = (w: number, h: number) => {
+      offscreen = document.createElement("canvas");
+      offscreen.width = w;
+      offscreen.height = h;
+      const oCtx = offscreen.getContext("2d");
+      if (!oCtx) return;
+      oCtx.fillStyle = "rgba(34, 197, 94, 0.035)";
+      for (let x = 0; x < w; x += 32) {
+        for (let y = 0; y < h; y += 32) {
+          oCtx.beginPath();
+          oCtx.arc(x, y, 1, 0, Math.PI * 2);
+          oCtx.fill();
+        }
+      }
+    };
 
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      buildDotGrid(canvas.width, canvas.height);
     };
 
     const init = () => {
       resize();
       window.addEventListener("resize", resize);
-      particles = [];
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle(canvas));
-      }
+      particles = Array.from(
+        { length: particleCount },
+        () => new Particle(canvas.width, canvas.height),
+      );
     };
 
     const animate = () => {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Draw light theme dot background grid
-      ctx.fillStyle = "rgba(34, 197, 94, 0.03)";
-      ctx.shadowBlur = 0;
-      for (let x = 0; x < canvas.width; x += 30) {
-        for (let y = 0; y < canvas.height; y += 30) {
-          ctx.beginPath();
-          ctx.arc(x, y, 1, 0, Math.PI * 2);
-          ctx.fill();
-        }
+      // Pause rendering when tab is not visible
+      if (document.hidden) {
+        animationFrameId = requestAnimationFrame(animate);
+        return;
       }
 
-      // Update and draw particles
-      particles.forEach((p) => p.update(canvas));
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw constellation lines connecting nearby particles
+      // Blit the pre-rendered dot grid (single drawImage call, very cheap)
+      if (offscreen) ctx.drawImage(offscreen, 0, 0);
+
+      const w = canvas.width;
+      const h = canvas.height;
+
+      // Update particles
+      particles.forEach((p) => p.update(w, h));
+
+      // Draw constellation lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 150) {
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < connectionDistance) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            // Opacity based on distance
-            const opacity = 1 - distance / 150;
-            ctx.strokeStyle = `rgba(34, 197, 94, ${opacity * 0.18})`;
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = `rgba(34, 197, 94, ${(1 - dist / connectionDistance) * 0.15})`;
+            ctx.lineWidth = 0.8;
             ctx.stroke();
           }
         }
@@ -117,7 +138,7 @@ export default function ParticleBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 0 }}
+      style={{ zIndex: 0, willChange: "transform" }}
     />
   );
 }

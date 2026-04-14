@@ -47,9 +47,11 @@ const openHours = [
 const todayLabel = new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(
   new Date(),
 );
-const mapEmbedUrl = "https://maps.google.com/maps?q=12.8602554,80.0647907&z=14&output=embed";
+const mapEmbedUrl =
+  "https://maps.google.com/maps?q=12.8602554,80.0647907&z=14&output=embed";
 const mapOpenUrl = "https://maps.app.goo.gl/ZjgqSZQsv4dVx3eh8";
-const mapDirectionsUrl = "https://www.google.com/maps/dir/?api=1&destination=12.8602554,80.0647907";
+const mapDirectionsUrl =
+  "https://www.google.com/maps/dir/?api=1&destination=12.8602554,80.0647907";
 
 export default function ContactPage() {
   const scrollRef = useScrollReveal();
@@ -131,15 +133,18 @@ export default function ContactPage() {
   };
 
   return (
-    <main ref={scrollRef} className="min-h-screen bg-transparent pt-32 pb-20">
-      <section className="relative mx-auto max-w-5xl px-6">
+    <main
+      ref={scrollRef}
+      className="min-h-screen bg-transparent pt-24 pb-14 sm:pt-32 sm:pb-20"
+    >
+      <section className="relative mx-auto max-w-5xl px-4 sm:px-6">
         <div className="pointer-events-none absolute right-0 top-0 h-150 w-150 translate-x-1/3 -translate-y-1/3 rounded-full bg-emerald-100/40 blur-[100px]" />
         <div className="relative">
           <div className="reveal-up text-center">
             <span className="inline-block rounded-full bg-emerald-50 px-5 py-2 text-xs font-bold uppercase tracking-widest text-emerald-700">
               Get in Touch
             </span>
-            <h2 className="mt-6 text-4xl font-black text-emerald-950 sm:text-5xl">
+            <h2 className="mt-6 text-3xl font-black text-emerald-950 sm:text-4xl md:text-5xl">
               We&apos;d Love to Hear From You
             </h2>
             <p className="mt-4 text-lg text-slate-500">
@@ -148,13 +153,15 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="mt-16 flex flex-col md:flex-row gap-12">
-            <div className="reveal-right flex-1 rounded-3xl bg-white p-10 text-slate-800 shadow-premium border border-emerald-100">
-              <h3 className="text-2xl font-bold">Contact Information</h3>
-              <p className="mt-4 text-slate-500">
+          <div className="mt-10 flex flex-col gap-8 sm:mt-16 md:flex-row md:gap-12">
+            <div className="reveal-right flex-1 rounded-2xl bg-white p-5 text-slate-800 shadow-premium border border-emerald-100 sm:rounded-3xl sm:p-10">
+              <h3 className="text-xl font-bold sm:text-2xl">
+                Contact Information
+              </h3>
+              <p className="mt-3 text-sm text-slate-500 sm:mt-4 sm:text-base">
                 Fill up the form to reach our Institute directly
               </p>
-              <div className="mt-10 flex flex-col gap-8">
+              <div className="mt-6 flex flex-col gap-6 sm:mt-10 sm:gap-8">
                 <div className="flex items-center gap-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
                     <svg
@@ -200,53 +207,50 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-emerald-100 bg-emerald-50/40 p-6">
-                  <p className="text-2xl font-light tracking-wide text-slate-800">
+                <div className="rounded-2xl border border-emerald-100 bg-emerald-50/40 p-4 sm:p-6">
+                  <p className="text-xl font-light tracking-wide text-slate-800 sm:text-2xl">
                     Open Hours
                   </p>
 
-                  <div className="mt-4 overflow-hidden rounded-xl border border-emerald-100 bg-white">
-                    <div className="px-4 py-3">
+                  <div className="mt-3 overflow-hidden rounded-xl border border-emerald-100 bg-white">
+                    <div className="px-3 py-3 sm:px-4">
                       <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                         Today
                       </p>
-                      <p className="mt-1 text-base font-medium leading-tight text-amber-700 sm:text-lg">
+                      <p className="mt-1 text-sm font-medium leading-tight text-amber-700 sm:text-base">
                         {todayHours}
                       </p>
                     </div>
 
-                    <div className="space-y-2 border-t border-emerald-100 bg-emerald-50/30 p-3">
+                    <div className="space-y-1.5 border-t border-emerald-100 bg-emerald-50/30 p-2 sm:p-3">
                       {openHours.map((item) => {
                         const isToday = item.day === todayLabel;
 
                         return (
                           <div
                             key={item.day}
-                            className={`flex items-center justify-between gap-4 rounded-lg px-3 py-2 text-sm ${
+                            className={`flex items-center rounded-lg px-2 py-1.5 text-xs sm:px-3 sm:py-2 sm:text-sm ${
                               isToday
                                 ? "bg-amber-50 text-amber-900"
                                 : "bg-white text-slate-700"
                             }`}
                           >
-                            <span className="font-semibold whitespace-nowrap">
+                            <span className="w-24 shrink-0 font-semibold sm:w-28">
                               {item.day}
                             </span>
-                            <span className="shrink-0 whitespace-nowrap text-right">
-                              {item.time}
-                            </span>
+                            <span>{item.time}</span>
                           </div>
                         );
                       })}
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
 
             <form
               onSubmit={handleSubmit}
-              className="reveal-left flex-[1.5] rounded-3xl border border-emerald-100 bg-white p-10 shadow-premium"
+              className="reveal-left flex-[1.5] rounded-2xl border border-emerald-100 bg-white p-6 shadow-premium sm:rounded-3xl sm:p-10"
             >
               <div className="grid gap-6 sm:grid-cols-2">
                 <div>
