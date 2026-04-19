@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Academics", href: "/academics" },
-  { label: `Admissions For ${new Date().getFullYear()}`, href: "/admissions" },
+  { label: `Admissions (${new Date().getFullYear()})`, href: "/admissions" },
   { label: "Contact", href: "/contact" },
 ];
 
