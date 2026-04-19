@@ -19,8 +19,8 @@ const categoryOptions = [
   "Other",
 ] as const;
 const groupOptions = [
-  "Maths, Physics, Chemistry, Computer Science",
   "Maths, Physics, Chemistry, Biology",
+  "Maths, Physics, Chemistry, Computer Science",
   "Commerce, Business Maths, Economics, Accountancy",
   "Other",
 ] as const;
