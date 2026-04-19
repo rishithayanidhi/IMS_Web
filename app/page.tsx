@@ -33,13 +33,19 @@ function useScrollReveal() {
 }
 
 const stats = [
-  { num: "800+", label: "Students Passed out", icon: "🎓" },
-  { num: "20", label: "Courses Available", icon: "📚" },
-  { num: "25+", label: "Expert Faculty", icon: "👨‍🏫" },
+  {
+    num: "800+",
+    label: "Students Passed out",
+    icon: "🎓",
+    href: "/",
+  },
+  { num: "20", label: "Courses Available", icon: "📚", href: "/academics" },
+  { num: "25+", label: "Expert Faculty", icon: "👨‍🏫", href: "/about" },
   {
     num: `${new Date().getFullYear() - 2012}` + "+",
     label: "Years of Excellence",
     icon: "⏳",
+    href: "/about",
   },
 ];
 
@@ -113,7 +119,8 @@ const features = [
     accent: "emerald",
     num: "04",
     icon: (
-      <svg
+      <a href="/academics" aria-label="Go to academics page">
+        <svg
         className="h-6 w-6"
         fill="none"
         viewBox="0 0 24 24"
@@ -126,6 +133,8 @@ const features = [
           d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489"
         />
       </svg>
+      </a>
+      
     ),
   },
 ];
@@ -224,8 +233,8 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-2 divide-x divide-slate-200/50 bg-white/70 backdrop-blur-md sm:grid-cols-4">
                 {stats.map((s) => (
-                  <div
-                    key={s.label}
+                  <a key={s.label} href={s.href} aria-label={`Go to ${s.label}`}>
+                    <div
                     className="group flex flex-col items-center py-4 transition-all duration-300 hover:bg-emerald-50/70"
                   >
                     <span className="text-xl transition-transform duration-300 group-hover:scale-125">
@@ -238,6 +247,8 @@ export default function Home() {
                       {s.label}
                     </span>
                   </div>
+                  </a>
+                  
                 ))}
               </div>
             </div>

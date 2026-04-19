@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import IIMSLogo from "./IIMSLogo";
 
 const navLinks = [
@@ -13,10 +14,18 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const isActivePath = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,14 +84,31 @@ export default function Navbar() {
         <ul className="hidden items-center gap-8 pr-6 lg:flex">
           {navLinks.map((link) => (
             <li key={link.label} className="flex items-center">
+              {(() => {
+                const isActive = isActivePath(link.href);
+
+                return (
               <Link
                 href={link.href}
-                className="group relative px-1 py-3 text-sm font-bold tracking-wide text-slate-600 transition-colors duration-300 hover:text-emerald-700"
+                aria-current={isActive ? "page" : undefined}
+                className={`group relative rounded-full px-3 py-2 text-sm font-bold tracking-wide transition-all duration-300 ${
+                  isActive
+                    ? "text-emerald-700"
+                    : "text-slate-600 hover:text-emerald-700"
+                }`}
               >
                 {link.label}
                 {/* Green dot hover effect underneath */}
-                <span className="absolute bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 scale-0 rounded-full bg-emerald-500 opacity-0 shadow-[0_0_8px_rgba(34,197,94,0.6)] transition-all duration-300 group-hover:scale-100 group-hover:opacity-100" />
+                <span
+                  className={`absolute bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.6)] transition-all duration-300 ${
+                    isActive
+                      ? "scale-100 bg-yellow-500 opacity-100"
+                      : "scale-0 bg-emerald-500 opacity-0 group-hover:scale-100 group-hover:opacity-100"
+                  }`}
+                />
               </Link>
+                );
+              })()}
             </li>
           ))}
         </ul>
@@ -119,14 +145,25 @@ export default function Navbar() {
       >
         <div className="flex flex-col gap-1 border border-emerald-200/60 bg-white/96 p-4 shadow-xl backdrop-blur-xl">
           {navLinks.map((link) => (
+            (() => {
+              const isActive = isActivePath(link.href);
+
+              return (
             <Link
               key={link.label}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="rounded-xl px-4 py-3 text-center text-sm font-bold tracking-wide text-slate-600 transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+              aria-current={isActive ? "page" : undefined}
+              className={`rounded-xl px-4 py-3 text-center text-sm font-bold tracking-wide transition-colors ${
+                isActive
+                  ? "text-emerald-700"
+                  : "text-slate-600 hover:bg-emerald-50 hover:text-emerald-700"
+              }`}
             >
               {link.label}
             </Link>
+              );
+            })()
           ))}
         </div>
       </div>

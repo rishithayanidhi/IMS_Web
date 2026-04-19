@@ -64,13 +64,15 @@ export default function AboutPage() {
             <div className="reveal-right relative w-full lg:w-1/2">
               <div className="absolute -inset-4 rounded-3xl bg-emerald-100/35 blur-xl"></div>
               {/* Using local institute image if available, else fallback to a nice building */}
-              <Image
-                src="/institute.jpg"
-                alt="IIMS Institute Building"
-                width={1200}
-                height={400}
-                className="relative z-10 h-64 w-full rounded-2xl object-cover shadow-2xl sm:h-80 lg:h-100"
-              />
+              <div className="relative h-64 w-full sm:h-80 lg:h-100">
+                <Image
+                  src="/institute.jpg"
+                  alt="IIMS Institute Building"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="relative z-10 rounded-2xl object-cover shadow-2xl"
+                />
+              </div>
             </div>
             <div className="reveal-left w-full lg:w-1/2 text-center lg:text-right">
               <h2 className="mb-4 text-xl font-black uppercase tracking-wide text-emerald-800 sm:mb-6 sm:text-2xl sm:tracking-widest">
@@ -151,13 +153,15 @@ export default function AboutPage() {
             </div>
             <div className="reveal-left relative w-full lg:w-1/2">
               <div className="absolute -inset-4 rounded-3xl bg-emerald-100/35 blur-xl"></div>
-              <Image
-                src="/classroom.png"
-                alt="Students in a classroom"
-                width={1200}
-                height={350}
-                className="relative z-10 h-56 w-full rounded-2xl object-cover shadow-2xl sm:h-72 lg:h-87.5"
-              />
+              <div className="relative h-56 w-full sm:h-72 lg:h-87.5">
+                <Image
+                  src="/classroom.png"
+                  alt="Students in a classroom"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="relative z-10 rounded-2xl object-cover shadow-2xl"
+                />
+              </div>
             </div>
           </section>
 
@@ -165,13 +169,15 @@ export default function AboutPage() {
           <section className="flex flex-col items-center gap-8 sm:gap-12 lg:flex-row">
             <div className="reveal-right relative w-full lg:w-1/2">
               <div className="absolute -inset-4 rounded-3xl bg-emerald-100/35 blur-xl"></div>
-              <Image
-                src="/graduation.png"
-                alt="Students throwing graduation caps"
-                width={1200}
-                height={350}
-                className="relative z-10 h-56 w-full rounded-2xl object-cover shadow-2xl sm:h-72 lg:h-87.5"
-              />
+              <div className="relative h-56 w-full sm:h-72 lg:h-87.5">
+                <Image
+                  src="/graduation.png"
+                  alt="Students throwing graduation caps"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="relative z-10 rounded-2xl object-cover shadow-2xl"
+                />
+              </div>
             </div>
             <div className="reveal-left w-full lg:w-1/2 text-center lg:text-right">
               <h2 className="mb-4 text-xl font-black uppercase tracking-wide text-emerald-800 sm:mb-6 sm:text-2xl sm:tracking-widest">
