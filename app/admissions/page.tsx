@@ -1,7 +1,7 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { useEffect, useRef, useState } from "react";
+// import { useEffect, useRef, useState } from "react";
 
 const admissionsSubmitUrl = "/api/admissions";
 const genderOptions = ["Male", "Female", "Prefer not to say"] as const;
