@@ -11,7 +11,7 @@ const stats = [
     href: "/",
   },
   { num: "20", label: "Courses Available", icon: "📚", href: "/academics" },
-  { num: "25+", label: "Expert Faculty", icon: "👨‍🏫", href: "/about" },
+  { num: "25+", label: "Expert Faculty", icon: "👨‍🏫", href: "/admissions" },
   {
     num: `${new Date().getFullYear() - 2012}` + "+",
     label: "Years of Excellence",
